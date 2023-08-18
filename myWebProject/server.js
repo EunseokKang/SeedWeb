@@ -4,7 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const createRoute = require('./routes/create');
+import createRoute from './routes/create';
 
 require("dotenv").config(); // 환경 변수 설정용
 
