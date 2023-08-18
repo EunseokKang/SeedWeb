@@ -17,7 +17,11 @@ const PORT = process.env.PORT || 3000;
 
 // 기본 GET 요청 처리
 app.get('/', (req, res) => {
-    res.send('공사가 다 망했잖아');
+    res.sendFile(__dirname + '/webpages/front.html');
+});
+
+app.get('/create', (req, res) => {
+    res.sendFile(__dirname + '/webpages/create.js');
 });
 
 // 서버 실행
