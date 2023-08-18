@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const createRoute = require('./routes/create');
 
 require("dotenv").config(); // 환경 변수 설정용
 
@@ -15,14 +16,14 @@ app.use(bodyParser.json());
 // 환경 변수에 저장된 PORT 값 불러오기 (기본값: 3000)
 const PORT = process.env.PORT || 3000;
 
+app.set('view engine', 'ejs'); // EJS 템플릿 엔진 사용 설정
+
 // 기본 GET 요청 처리
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/webpages/front.html');
 });
 
-app.get('/create', (req, res) => {
-    res.sendFile(__dirname + '/webpages/create.js');
-});
+app.use('/create', createRoute);
 
 // 서버 실행
 app.listen(PORT, () => {
